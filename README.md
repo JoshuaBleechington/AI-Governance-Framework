@@ -9,7 +9,8 @@ In this project, I researched, mapped, and applied the leading AI governance fra
 
 ---
 
-![AI Governance Dashboard](images/ai-governance-dashboard.png)
+> 🖥️ **[View Interactive AI Governance Dashboard →](./ai-governance-dashboard.html)**
+> *Includes EU AI Act Risk Pyramid, NIST AI RMF Core Functions, Interactive Risk Classifier, and Framework Comparison*
 
 ---
 
@@ -61,8 +62,6 @@ This project simulates what a GRC or Security Architect would do to close that g
 
 The **NIST AI Risk Management Framework (AI RMF 1.0)** provides a voluntary, non-prescriptive approach to managing AI risk across four core functions. I used this as the organizational backbone of the governance program.
 
-![NIST AI RMF Core Functions](images/nist-rmf-core.png)
-
 ### GOVERN
 Establishes the policies, accountability structures, and organizational culture required to manage AI risk.
 
@@ -100,8 +99,6 @@ Key actions taken:
 ## Step 2) EU AI Act — Risk Tier Classification
 
 The **EU AI Act** (effective August 2024, phased enforcement through 2027) establishes a risk-based classification system. Even organizations outside the EU must comply if they deploy AI systems that affect EU residents.
-
-![EU AI Act Risk Pyramid](images/eu-ai-act-pyramid.png)
 
 ### Tier 1 — Unacceptable Risk (Prohibited)
 AI applications that pose a clear threat to fundamental rights. **Outright banned** with no compliance pathway.
