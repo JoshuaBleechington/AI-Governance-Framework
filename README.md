@@ -215,6 +215,7 @@ The following policy documents were developed as outputs of this program:
 ---
 
 ## Ongoing AI Governance Activities
+<img width="1408" height="768" alt="Firefly_Gemini Flash_-A small cute robot wearing a tiny graduation cap and a business suit, proudly holdin 964978" src="https://github.com/user-attachments/assets/175b1ffe-ee84-44db-b9aa-64cee372bbd1" />
 
 - **Quarterly AI inventory reviews** — identify new tools adopted by business units
 - **Annual framework refresh** — track updates to EU AI Act enforcement timeline and NIST AI RMF guidance
