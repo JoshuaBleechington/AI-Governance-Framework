@@ -9,7 +9,7 @@ In this project, I researched, mapped, and applied the leading AI governance fra
 
 ---
 
-> 🖥️ **[View Interactive AI Governance Dashboard →](./ai-governance-dashboard.html)**
+> 🖥️ **[View Interactive AI Governance Dashboard →](https://joshuableechington.github.io/AI-Governance-Framework/ai-governance-dashboard.html)**
 > *Includes EU AI Act Risk Pyramid, NIST AI RMF Core Functions, Interactive Risk Classifier, and Framework Comparison*
 
 ---
