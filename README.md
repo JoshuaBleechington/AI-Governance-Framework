@@ -61,6 +61,7 @@ This project simulates what a GRC or Security Architect would do to close that g
 ---
 
 ## Step 1) NIST AI RMF — Core Functions
+<img width="1408" height="768" alt="NIST AI RMF" src="https://github.com/user-attachments/assets/2cd8abb4-9a5d-49a3-9a56-73b819939ad0" />
 
 The **NIST AI Risk Management Framework (AI RMF 1.0)** provides a voluntary, non-prescriptive approach to managing AI risk across four core functions. I used this as the organizational backbone of the governance program.
 
