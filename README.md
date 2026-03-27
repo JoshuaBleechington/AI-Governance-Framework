@@ -150,7 +150,8 @@ The following AI systems were identified across the organization and classified:
 ---
 
 ## Step 4) Governance Policy Development
-<img width="1584" height="672" alt="AI HITL Image" src="https://github.com/user-attachments/assets/f83b583c-2cf8-4cfa-a228-dae59ae46350" />
+<img width="1408" height="768" alt="Firefly_Gemini Flash_I want a sleak Human hand AND robot AI collaboration to show the HITL  Something futu 964978" src="https://github.com/user-attachments/assets/81a7791a-6d43-407e-8c75-fe42c1e26937" />
+
 
 The following policy documents were developed as outputs of this program:
 
