@@ -1,5 +1,7 @@
 # AI Governance & Compliance Framework
 ### NIST AI RMF · EU AI Act · ISO/IEC 42001 · Responsible AI
+<img width="1408" height="768" alt="NIST AI AMF Image" src="https://github.com/user-attachments/assets/4bc05666-ebd3-4534-a0e5-ce5cca20c100" />
+
 
 In this project, I researched, mapped, and applied the leading AI governance frameworks to a real organizational context — demonstrating how a security and GRC professional would evaluate, classify, and manage AI system risk in a modern enterprise environment.
 
