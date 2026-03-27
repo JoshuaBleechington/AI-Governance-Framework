@@ -101,6 +101,7 @@ Key actions taken:
 ---
 
 ## Step 2) EU AI Act — Risk Tier Classification
+<img width="1408" height="768" alt="NIST AI AMF Image" src="https://github.com/user-attachments/assets/b32fd4ba-2d3a-45ae-be2a-91d667b05b46" />
 
 The **EU AI Act** (effective August 2024, phased enforcement through 2027) establishes a risk-based classification system. Even organizations outside the EU must comply if they deploy AI systems that affect EU residents.
 
