@@ -148,6 +148,7 @@ The following AI systems were identified across the organization and classified:
 ---
 
 ## Step 4) Governance Policy Development
+<img width="1584" height="672" alt="AI HITL Image" src="https://github.com/user-attachments/assets/f83b583c-2cf8-4cfa-a228-dae59ae46350" />
 
 The following policy documents were developed as outputs of this program:
 
