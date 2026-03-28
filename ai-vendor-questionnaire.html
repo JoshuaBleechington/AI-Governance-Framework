@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Vendor Risk Questionnaire — Pursue SEO Marketing</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #050b18;
+  --surface: #0a1020;
+  --surface2: #0f1830;
+  --border: #1a2d50;
+  --border2: #243d66;
+  --cyan: #00d4ff;
+  --cyan-dim: rgba(0,212,255,0.08);
+  --green: #00e5a0;
+  --green-dim: rgba(0,229,160,0.08);
+  --yellow: #ffd166;
+  --yellow-dim: rgba(255,209,102,0.08);
+  --orange: #ff8c42;
+  --orange-dim: rgba(255,140,66,0.08);
+  --red: #ff4560;
+  --red-dim: rgba(255,69,96,0.08);
+  --purple: #a78bfa;
+  --purple-dim: rgba(167,139,250,0.08);
+  --text: #e2eaf8;
+  --text-muted: #5a7399;
+  --text-dim: #2a3f60;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:var(--bg); font-family:'Outfit',sans-serif;
+  color:var(--text); min-height:100vh;
+}
+body::before {
+  content:''; position:fixed; inset:0;
+  background-image:linear-gradient(rgba(0,212,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.02) 1px,transparent 1px);
+  background-size:50px 50px; pointer-events:none; z-index:0;
+}
+
+/* HEADER */
+.header {
+  position:relative; z-index:10;
+  background:var(--surface); border-bottom:1px solid var(--border);
+  padding:20px 40px;
+}
+.header-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+.header-eyebrow {
+  display:flex; align-items:center; gap:8px;
+  font-family:'Space Mono',monospace; font-size:9px;
+  color:var(--cyan); letter-spacing:0.2em; text-transform:uppercase;
+}
+.blink { width:6px; height:6px; border-radius:50%; background:var(--cyan); box-shadow:0 0 8px var(--cyan); animation:blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+.header-title { font-size:24px; font-weight:800; letter-spacing:-0.02em; }
+.header-title span { color:var(--cyan); }
+.header-sub { font-size:12px; color:var(--text-muted); margin-top:4px; }
+.header-meta { display:flex; gap:10px; align-items:center; }
+.meta-badge {
+  padding:5px 12px; border-radius:20px; font-size:10px; font-weight:600;
+  letter-spacing:0.08em; text-transform:uppercase; border:1px solid;
+}
+.progress-bar-wrap {
+  background:var(--border); border-radius:4px; height:4px; width:220px; overflow:hidden;
+}
+.progress-bar-fill {
+  height:100%; background:linear-gradient(90deg,var(--cyan),var(--green));
+  border-radius:4px; transition:width 0.4s ease; width:0%;
+}
+.progress-label { font-family:'Space Mono',monospace; font-size:10px; color:var(--text-muted); }
+
+/* LAYOUT */
+.main { position:relative; z-index:1; display:grid; grid-template-columns:260px 1fr; min-height:calc(100vh - 100px); }
+
+/* SIDEBAR */
+.sidebar {
+  background:var(--surface); border-right:1px solid var(--border);
+  padding:20px 0; position:sticky; top:0; height:calc(100vh - 100px); overflow-y:auto;
+}
+.sidebar-section { padding:0 16px; margin-bottom:8px; }
+.sidebar-section-label {
+  font-family:'Space Mono',monospace; font-size:9px; color:var(--text-dim);
+  letter-spacing:0.14em; text-transform:uppercase; padding:8px 4px 6px;
+  border-bottom:1px solid var(--border); margin-bottom:6px;
+}
+.section-nav-btn {
+  display:flex; align-items:center; gap:10px; width:100%;
+  padding:9px 10px; border-radius:8px; cursor:pointer;
+  transition:all 0.15s; border:none; background:none; text-align:left;
+  border-left:3px solid transparent; margin-bottom:2px;
+}
+.section-nav-btn:hover { background:var(--surface2); }
+.section-nav-btn.active { background:var(--surface2); border-left-color:var(--cyan); }
+.section-nav-btn.completed { border-left-color:var(--green); }
+.snb-icon { font-size:16px; flex-shrink:0; }
+.snb-text { }
+.snb-name { font-size:11.5px; font-weight:600; color:var(--text); }
+.section-nav-btn.active .snb-name { color:var(--cyan); }
+.snb-count { font-size:10px; color:var(--text-muted); }
+.snb-check { margin-left:auto; font-size:12px; color:var(--green); display:none; }
+.section-nav-btn.completed .snb-check { display:block; }
+
+.sidebar-score-box {
+  margin:12px 16px 0; background:var(--surface2);
+  border:1px solid var(--border); border-radius:10px; padding:14px;
+}
+.ssb-label { font-family:'Space Mono',monospace; font-size:9px; color:var(--text-muted); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:8px; }
+.ssb-score { font-size:28px; font-weight:800; color:var(--cyan); line-height:1; }
+.ssb-max { font-size:12px; color:var(--text-dim); }
+.ssb-risk { font-size:11px; font-weight:600; margin-top:6px; }
+
+/* CONTENT */
+.content { padding:28px 36px; max-width:900px; }
+
+.section-block { display:none; }
+.section-block.active { display:block; animation:fadeIn 0.3s ease; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+.section-header {
+  display:flex; align-items:center; gap:14px; margin-bottom:24px;
+  padding-bottom:16px; border-bottom:1px solid var(--border);
+}
+.section-big-icon { font-size:32px; }
+.section-num { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-muted); margin-bottom:3px; }
+.section-name { font-size:20px; font-weight:800; }
+.section-desc { font-size:12px; color:var(--text-muted); margin-top:3px; line-height:1.5; }
+
+/* QUESTION */
+.question-card {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:10px; padding:18px 20px; margin-bottom:12px;
+  transition:border-color 0.2s;
+}
+.question-card.answered { border-color:rgba(0,229,160,0.3); }
+.question-card.flagged { border-color:rgba(255,69,96,0.3); }
+
+.q-header { display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; }
+.q-num {
+  font-family:'Space Mono',monospace; font-size:10px; font-weight:700;
+  color:var(--cyan); background:var(--cyan-dim); border:1px solid rgba(0,212,255,0.2);
+  padding:3px 8px; border-radius:6px; flex-shrink:0; margin-top:2px;
+}
+.q-text { font-size:13px; font-weight:600; color:var(--text); line-height:1.5; flex:1; }
+.q-risk-flag {
+  flex-shrink:0; font-size:9px; font-weight:700;
+  padding:3px 8px; border-radius:6px; font-family:'Space Mono',monospace;
+  letter-spacing:0.06em;
+}
+.flag-critical { background:var(--red-dim); color:var(--red); border:1px solid var(--red); }
+.flag-high { background:var(--orange-dim); color:var(--orange); border:1px solid var(--orange); }
+.flag-medium { background:var(--yellow-dim); color:var(--yellow); border:1px solid var(--yellow); }
+.flag-low { background:var(--green-dim); color:var(--green); border:1px solid var(--green); }
+
+.q-guidance { font-size:11.5px; color:var(--text-muted); margin-bottom:12px; line-height:1.6; padding-left:4px; border-left:2px solid var(--border2); padding-left:10px; }
+
+.q-options { display:flex; flex-direction:column; gap:6px; }
+.q-option {
+  display:flex; align-items:center; gap:10px;
+  background:var(--surface2); border:1px solid var(--border);
+  border-radius:7px; padding:10px 14px; cursor:pointer;
+  transition:all 0.15s; font-size:12px; color:var(--text-muted);
+}
+.q-option:hover { border-color:var(--border2); color:var(--text); }
+.q-option.selected { color:var(--text); }
+.q-option.selected.opt-yes { border-color:var(--green); background:var(--green-dim); color:var(--green); }
+.q-option.selected.opt-partial { border-color:var(--yellow); background:var(--yellow-dim); color:var(--yellow); }
+.q-option.selected.opt-no { border-color:var(--red); background:var(--red-dim); color:var(--red); }
+.q-option.selected.opt-na { border-color:var(--text-dim); background:rgba(255,255,255,0.02); color:var(--text-dim); }
+.q-radio {
+  width:14px; height:14px; border-radius:50%; border:2px solid var(--border2);
+  flex-shrink:0; display:flex; align-items:center; justify-content:center;
+  transition:all 0.15s;
+}
+.q-option.selected .q-radio { border-color:currentColor; background:currentColor; }
+.q-option.selected .q-radio::after { content:''; width:4px; height:4px; border-radius:50%; background:var(--bg); }
+
+.q-text-input {
+  width:100%; background:var(--surface2); border:1px solid var(--border);
+  border-radius:7px; padding:10px 14px; font-size:12px; color:var(--text);
+  font-family:'Outfit',sans-serif; resize:vertical; min-height:60px;
+  transition:border-color 0.15s; margin-top:8px;
+}
+.q-text-input:focus { outline:none; border-color:var(--cyan); }
+.q-text-input::placeholder { color:var(--text-dim); }
+
+/* NAVIGATION */
+.nav-buttons {
+  display:flex; align-items:center; gap:12px; margin-top:24px; padding-top:20px;
+  border-top:1px solid var(--border);
+}
+.nav-btn {
+  padding:10px 22px; border-radius:8px; font-size:12px; font-weight:600;
+  cursor:pointer; transition:all 0.15s; font-family:'Outfit',sans-serif;
+  display:flex; align-items:center; gap:6px;
+}
+.nav-btn-prev { background:var(--surface2); border:1px solid var(--border); color:var(--text-muted); }
+.nav-btn-prev:hover { color:var(--text); border-color:var(--border2); }
+.nav-btn-next { background:var(--cyan); border:1px solid var(--cyan); color:var(--bg); font-weight:700; }
+.nav-btn-next:hover { background:#00bfe8; }
+.nav-btn-submit { background:var(--green); border:1px solid var(--green); color:var(--bg); font-weight:700; }
+.nav-btn-submit:hover { background:#00cc8e; }
+.nav-section-name { font-size:11px; color:var(--text-muted); margin-left:auto; }
+
+/* RESULTS */
+.results-panel { display:none; padding:28px 36px; max-width:900px; }
+.results-panel.visible { display:block; animation:fadeIn 0.4s ease; }
+
+.results-header {
+  text-align:center; padding:32px; background:var(--surface);
+  border:1px solid var(--border); border-radius:12px; margin-bottom:24px;
+}
+.results-score-big { font-size:64px; font-weight:800; line-height:1; }
+.results-score-label { font-size:14px; color:var(--text-muted); margin-top:4px; }
+.results-risk-level { font-size:20px; font-weight:700; margin-top:12px; }
+.results-rec { font-size:13px; color:var(--text-muted); margin-top:8px; line-height:1.6; max-width:500px; margin-left:auto; margin-right:auto; }
+
+.results-breakdown { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:24px; }
+.rb-card {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:10px; padding:16px; text-align:center;
+}
+.rb-icon { font-size:22px; margin-bottom:6px; }
+.rb-label { font-size:10px; color:var(--text-muted); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:4px; font-family:'Space Mono',monospace; }
+.rb-val { font-size:18px; font-weight:700; }
+
+.results-flags { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-bottom:20px; }
+.rf-title { font-family:'Space Mono',monospace; font-size:10px; color:var(--red); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:14px; }
+.rf-item { display:flex; gap:10px; font-size:12px; margin-bottom:8px; align-items:flex-start; color:var(--text-muted); }
+.rf-item-q { color:var(--text); font-weight:600; flex-shrink:0; min-width:60px; }
+
+.results-actions { display:flex; gap:12px; justify-content:center; }
+.ra-btn {
+  padding:12px 24px; border-radius:8px; font-size:13px; font-weight:600;
+  cursor:pointer; transition:all 0.15s; font-family:'Outfit',sans-serif;
+}
+.ra-print { background:var(--cyan); border:1px solid var(--cyan); color:var(--bg); }
+.ra-reset { background:var(--surface2); border:1px solid var(--border); color:var(--text-muted); }
+.ra-reset:hover { color:var(--text); }
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--border2); border-radius:3px; }
+
+@media print {
+  body { background:white; color:black; }
+  body::before { display:none; }
+  .header { background:white; border-bottom:1px solid #ccc; }
+  .header-title { color:black; }
+  .header-title span { color:#0078d4; }
+  .sidebar { display:none; }
+  .main { grid-template-columns:1fr; }
+  .section-block { display:block !important; }
+  .nav-buttons { display:none; }
+  .question-card { background:white; border:1px solid #ddd; break-inside:avoid; }
+  .q-text { color:black; }
+  .q-guidance { color:#555; }
+  .q-options { display:none; }
+  .q-text-input { border:1px solid #ccc; background:white; color:black; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-top">
+    <div>
+      <div class="header-eyebrow"><div class="blink"></div>Pursue SEO Marketing · AI Governance Program</div>
+      <div class="header-title">AI Vendor <span>Risk Questionnaire</span></div>
+      <div class="header-sub">28-Question Assessment · Model Transparency · Bias Testing · Data Handling · Compliance Certifications</div>
+    </div>
+    <div class="header-meta">
+      <div>
+        <div class="progress-label" id="progressLabel">0 of 28 answered</div>
+        <div class="progress-bar-wrap" style="margin-top:4px;">
+          <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+      </div>
+      <div class="meta-badge" style="border-color:var(--cyan);color:var(--cyan);background:var(--cyan-dim);">28 Questions</div>
+      <div class="meta-badge" style="border-color:var(--purple);color:var(--purple);background:var(--purple-dim);">GRC / Procurement</div>
+    </div>
+  </div>
+</header>
+
+<div class="main" id="mainLayout">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Assessment Sections</div>
+      <button class="section-nav-btn active" onclick="goToSection(0)">
+        <span class="snb-icon">🏢</span>
+        <div class="snb-text">
+          <div class="snb-name">Vendor Overview</div>
+          <div class="snb-count">Q1–Q4 · 4 questions</div>
+        </div>
+        <span class="snb-check">✓</span>
+      </button>
+      <button class="section-nav-btn" onclick="goToSection(1)">
+        <span class="snb-icon">🤖</span>
+        <div class="snb-text">
+          <div class="snb-name">Model Transparency</div>
+          <div class="snb-count">Q5–Q10 · 6 questions</div>
+        </div>
+        <span class="snb-check">✓</span>
+      </button>
+      <button class="section-nav-btn" onclick="goToSection(2)">
+        <span class="snb-icon">⚖️</span>
+        <div class="snb-text">
+          <div class="snb-name">Bias & Fairness Testing</div>
+          <div class="snb-count">Q11–Q16 · 6 questions</div>
+        </div>
+        <span class="snb-check">✓</span>
+      </button>
+      <button class="section-nav-btn" onclick="goToSection(3)">
+        <span class="snb-icon">🔒</span>
+        <div class="snb-text">
+          <div class="snb-name">Data Handling</div>
+          <div class="snb-count">Q17–Q22 · 6 questions</div>
+        </div>
+        <span class="snb-check">✓</span>
+      </button>
+      <button class="section-nav-btn" onclick="goToSection(4)">
+        <span class="snb-icon">📋</span>
+        <div class="snb-text">
+          <div class="snb-name">Compliance Certifications</div>
+          <div class="snb-count">Q23–Q28 · 6 questions</div>
+        </div>
+        <span class="snb-check">✓</span>
+      </button>
+    </div>
+
+    <div class="sidebar-score-box">
+      <div class="ssb-label">Risk Score</div>
+      <div><span class="ssb-score" id="sidebarScore">0</span><span class="ssb-max"> / 100</span></div>
+      <div class="ssb-risk" id="sidebarRisk" style="color:var(--text-muted);">Not started</div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content" id="contentArea">
+
+    <!-- SECTION 0: VENDOR OVERVIEW -->
+    <div class="section-block active" id="section-0">
+      <div class="section-header">
+        <span class="section-big-icon">🏢</span>
+        <div>
+          <div class="section-num">Section 01 of 05</div>
+          <div class="section-name" style="color:var(--cyan);">Vendor Overview</div>
+          <div class="section-desc">Basic vendor identification, AI product description, and deployment context. Used to establish scope of assessment and which subsequent questions apply.</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-1">
+        <div class="q-header">
+          <span class="q-num">Q1</span>
+          <span class="q-text">What is the name of the AI product or feature being assessed, and what business problem does it solve for our organization?</span>
+          <span class="q-risk-flag flag-low">INFO</span>
+        </div>
+        <div class="q-guidance">Provide the full product name, version, and a clear description of the specific AI functionality — not just the broader platform. Be specific about which features use AI/ML versus traditional rule-based logic.</div>
+        <textarea class="q-text-input" id="q1-text" placeholder="e.g. Workday AI — Candidate Ranking Module v3.2. Uses ML to rank job applicants based on resume match scoring against job description criteria..." onInput="updateProgress()"></textarea>
+      </div>
+
+      <div class="question-card" id="qcard-2">
+        <div class="q-header">
+          <span class="q-num">Q2</span>
+          <span class="q-text">What type of AI/ML techniques does this product use? (e.g. Large Language Model, classification model, computer vision, recommendation engine, etc.)</span>
+          <span class="q-risk-flag flag-medium">MEDIUM</span>
+        </div>
+        <div class="q-guidance">Understanding the underlying technique helps classify EU AI Act risk tier and identify relevant bias/fairness concerns. LLMs carry different risks than traditional ML classifiers.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q2','Large Language Model (LLM / Generative AI)')"><div class="q-radio"></div>Large Language Model (LLM / Generative AI)</div>
+          <div class="q-option opt-yes" onclick="selectOption(this,'q2','Traditional ML (classification, regression, clustering)')"><div class="q-radio"></div>Traditional ML (classification, regression, clustering)</div>
+          <div class="q-option opt-yes" onclick="selectOption(this,'q2','Computer Vision / Image Recognition')"><div class="q-radio"></div>Computer Vision / Image Recognition</div>
+          <div class="q-option opt-yes" onclick="selectOption(this,'q2','Natural Language Processing (non-generative)')"><div class="q-radio"></div>Natural Language Processing (non-generative)</div>
+          <div class="q-option opt-yes" onclick="selectOption(this,'q2','Recommendation / Ranking Engine')"><div class="q-radio"></div>Recommendation / Ranking Engine</div>
+          <div class="q-option opt-yes" onclick="selectOption(this,'q2','Rule-based / Expert System (not AI/ML)')"><div class="q-radio"></div>Rule-based / Expert System (not AI/ML)</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-3">
+        <div class="q-header">
+          <span class="q-num">Q3</span>
+          <span class="q-text">Which departments or functions within our organization will interact with or be affected by this AI system?</span>
+          <span class="q-risk-flag flag-medium">MEDIUM</span>
+        </div>
+        <div class="q-guidance">Identifies scope of impact and which employees, customers, or third parties may be subject to AI-driven decisions. Required for EU AI Act risk tier classification.</div>
+        <textarea class="q-text-input" id="q3-text" placeholder="e.g. HR (hiring decisions), Finance (expense approvals), Customer Success (automated responses)..." onInput="updateProgress()"></textarea>
+      </div>
+
+      <div class="question-card" id="qcard-4">
+        <div class="q-header">
+          <span class="q-num">Q4</span>
+          <span class="q-text">Will this AI system make or significantly influence decisions that materially affect individuals (hiring, credit, healthcare, legal, access to services)?</span>
+          <span class="q-risk-flag flag-critical">CRITICAL</span>
+        </div>
+        <div class="q-guidance">This is the primary EU AI Act High-Risk trigger. Any affirmative answer activates mandatory conformity assessment requirements, human oversight obligations, and bias testing requirements under EU AI Act Annex III.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q4','Yes — directly makes such decisions',true)"><div class="q-radio"></div>Yes — directly makes such decisions</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q4','Partially — significantly influences but human makes final call')"><div class="q-radio"></div>Partially — significantly influences but human makes final call</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q4','No — informational/analytical only, no material decisions')"><div class="q-radio"></div>No — informational/analytical only, no material decisions</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn nav-btn-next" onclick="goToSection(1)">Next: Model Transparency →</button>
+        <span class="nav-section-name">Next: Section 02 of 05</span>
+      </div>
+    </div>
+
+    <!-- SECTION 1: MODEL TRANSPARENCY -->
+    <div class="section-block" id="section-1">
+      <div class="section-header">
+        <span class="section-big-icon">🤖</span>
+        <div>
+          <div class="section-num">Section 02 of 05</div>
+          <div class="section-name" style="color:var(--purple);">Model Transparency</div>
+          <div class="section-desc">Assesses how openly the vendor communicates about how their AI model works, what data trained it, how decisions are made, and whether outputs are explainable.</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-5">
+        <div class="q-header">
+          <span class="q-num">Q5</span>
+          <span class="q-text">Does the vendor provide a Model Card or equivalent documentation describing the model's intended use, limitations, performance metrics, and known failure modes?</span>
+          <span class="q-risk-flag flag-high">HIGH</span>
+        </div>
+        <div class="q-guidance">Model Cards (introduced by Google) are the industry standard for AI transparency documentation. Their absence for any high-risk AI deployment is a significant red flag and may indicate non-compliance with EU AI Act Art. 13 transparency requirements.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q5','Yes — comprehensive Model Card publicly available',false,3)"><div class="q-radio"></div>Yes — comprehensive Model Card publicly available</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q5','Partial — some documentation available under NDA',false,2)"><div class="q-radio"></div>Partial — some documentation available under NDA</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q5','No — vendor declines to provide model documentation',true,0)"><div class="q-radio"></div>No — vendor declines to provide model documentation</div>
+          <div class="q-option opt-na" onclick="selectOption(this,'q5','N/A — rule-based system, no ML model involved',false,3)"><div class="q-radio"></div>N/A — rule-based system, no ML model involved</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-6">
+        <div class="q-header">
+          <span class="q-num">Q6</span>
+          <span class="q-text">Can the vendor explain, in plain language, how the AI system arrives at its outputs or recommendations?</span>
+          <span class="q-risk-flag flag-high">HIGH</span>
+        </div>
+        <div class="q-guidance">Explainability is required under GDPR Art. 22 (right to explanation), EU AI Act High-Risk requirements, and NIST AI RMF MS-3. Black-box models that cannot be explained are non-compliant for high-stakes decisions.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q6','Yes — full feature importance and decision reasoning available',false,3)"><div class="q-radio"></div>Yes — full feature importance and decision reasoning available</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q6','Partial — general explanation available but not per-decision',false,2)"><div class="q-radio"></div>Partial — general explanation available but not per-decision</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q6','No — black-box model, no explainability provided',true,0)"><div class="q-radio"></div>No — black-box model, no explainability provided</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-7">
+        <div class="q-header">
+          <span class="q-num">Q7</span>
+          <span class="q-text">What data was the model trained on? Does the vendor disclose training data sources, vintage, and any known gaps or limitations?</span>
+          <span class="q-risk-flag flag-high">HIGH</span>
+        </div>
+        <div class="q-guidance">Training data quality directly determines model reliability and bias risk. Vendors using outdated, unrepresentative, or opaque training data introduce significant risk. Required disclosure under EU AI Act Art. 10 (Data Governance).</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q7','Yes — full disclosure of training data sources and limitations',false,3)"><div class="q-radio"></div>Yes — full disclosure of training data sources and limitations</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q7','Partial — general description provided without specifics',false,2)"><div class="q-radio"></div>Partial — general description provided without specifics</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q7','No — training data details are proprietary and undisclosed',true,0)"><div class="q-radio"></div>No — training data details are proprietary and undisclosed</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-8">
+        <div class="q-header">
+          <span class="q-num">Q8</span>
+          <span class="q-text">How frequently is the model retrained or updated, and how are customers notified of material changes to model behavior?</span>
+          <span class="q-risk-flag flag-medium">MEDIUM</span>
+        </div>
+        <div class="q-guidance">Model drift — gradual degradation of performance over time — is a critical governance concern. Undisclosed model updates can alter behavior of deployed systems. Required under EU AI Act post-market monitoring obligations.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q8','Formal change management — customers notified of all material updates',false,3)"><div class="q-radio"></div>Formal change management — customers notified of all material updates</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q8','Release notes provided but no proactive customer notification',false,2)"><div class="q-radio"></div>Release notes provided but no proactive customer notification</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q8','No disclosure process — model updates applied without notice',true,0)"><div class="q-radio"></div>No disclosure process — model updates applied without notice</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-9">
+        <div class="q-header">
+          <span class="q-num">Q9</span>
+          <span class="q-text">Does the vendor publish accuracy, precision, recall, and confidence metrics for the model in production conditions (not just benchmark tests)?</span>
+          <span class="q-risk-flag flag-high">HIGH</span>
+        </div>
+        <div class="q-guidance">Benchmark performance often significantly overstates real-world accuracy. Vendors should provide production performance metrics. Absence of real-world performance data makes it impossible to assess actual risk.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q9','Yes — production performance metrics available and regularly updated',false,3)"><div class="q-radio"></div>Yes — production performance metrics available and regularly updated</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q9','Benchmark metrics only — no production performance data',false,1)"><div class="q-radio"></div>Benchmark metrics only — no production performance data</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q9','No performance metrics disclosed',true,0)"><div class="q-radio"></div>No performance metrics disclosed</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-10">
+        <div class="q-header">
+          <span class="q-num">Q10</span>
+          <span class="q-text">Does the vendor provide customers with access to audit logs showing what inputs the AI received and what outputs it produced for decisions affecting our organization?</span>
+          <span class="q-risk-flag flag-high">HIGH</span>
+        </div>
+        <div class="q-guidance">Audit trail access is required for regulatory investigations, incident response, and demonstrating compliance. EU AI Act Art. 19 requires High-Risk AI systems to maintain logs. GDPR requires accountability evidence.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q10','Yes — full audit logs accessible to customer',false,3)"><div class="q-radio"></div>Yes — full audit logs accessible to customer</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q10','Partial — logs available on request but not self-service',false,2)"><div class="q-radio"></div>Partial — logs available on request but not self-service</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q10','No — audit logs not available to customers',true,0)"><div class="q-radio"></div>No — audit logs not available to customers</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn nav-btn-prev" onclick="goToSection(0)">← Previous</button>
+        <button class="nav-btn nav-btn-next" onclick="goToSection(2)">Next: Bias & Fairness Testing →</button>
+        <span class="nav-section-name">Next: Section 03 of 05</span>
+      </div>
+    </div>
+
+    <!-- SECTION 2: BIAS & FAIRNESS -->
+    <div class="section-block" id="section-2">
+      <div class="section-header">
+        <span class="section-big-icon">⚖️</span>
+        <div>
+          <div class="section-num">Section 03 of 05</div>
+          <div class="section-name" style="color:var(--yellow);">Bias & Fairness Testing</div>
+          <div class="section-desc">Evaluates whether the vendor has proactively tested for discriminatory outcomes across protected characteristics and has controls to detect and remediate bias over time.</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-11">
+        <div class="q-header">
+          <span class="q-num">Q11</span>
+          <span class="q-text">Has the vendor conducted structured bias testing across legally protected characteristics (race, gender, age, disability, national origin) before deployment?</span>
+          <span class="q-risk-flag flag-critical">CRITICAL</span>
+        </div>
+        <div class="q-guidance">Pre-deployment bias testing is mandatory under EU AI Act for High-Risk systems (Art. 9, 10) and required by EEOC guidance for employment AI in the US. Absence of testing is a critical compliance failure for any decision-making AI.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q11','Yes — comprehensive testing with documented results available',false,3)"><div class="q-radio"></div>Yes — comprehensive testing with documented results available</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q11','Partial — some protected characteristics tested but not all',false,2)"><div class="q-radio"></div>Partial — some protected characteristics tested but not all</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q11','No — bias testing has not been conducted',true,0)"><div class="q-radio"></div>No — bias testing has not been conducted</div>
+          <div class="q-option opt-na" onclick="selectOption(this,'q11','N/A — system does not affect individuals covered by anti-discrimination law',false,3)"><div class="q-radio"></div>N/A — system does not affect individuals covered by anti-discrimination law</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-12">
+        <div class="q-header">
+          <span class="q-num">Q12</span>
+          <span class="q-text">What fairness metrics does the vendor use? (e.g. Demographic Parity, Equal Opportunity, Calibration, Counterfactual Fairness)</span>
+          <span class="q-risk-flag flag-high">HIGH</span>
+        </div>
+        <div class="q-guidance">Different fairness metrics can be in mathematical tension — a model cannot always optimize all simultaneously. Vendors should have a documented rationale for which metric they prioritize and why, based on the use case context.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q12','Multiple metrics with documented rationale for selection',false,3)"><div class="q-radio"></div>Multiple metrics with documented rationale for selection</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q12','Single metric used — limited fairness perspective',false,2)"><div class="q-radio"></div>Single metric used — limited fairness perspective</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q12','No formal fairness metrics defined or documented',true,0)"><div class="q-radio"></div>No formal fairness metrics defined or documented</div>
+          <div class="q-option opt-na" onclick="selectOption(this,'q12','N/A — fairness metrics not applicable to this system',false,3)"><div class="q-radio"></div>N/A — fairness metrics not applicable to this system</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-13">
+        <div class="q-header">
+          <span class="q-num">Q13</span>
+          <span class="q-text">Does the vendor conduct ongoing bias monitoring in production, not just at initial deployment?</span>
+          <span class="q-risk-flag flag-high">HIGH</span>
+        </div>
+        <div class="q-guidance">Bias can emerge or worsen over time as real-world usage patterns diverge from training data. One-time pre-deployment testing is insufficient — continuous monitoring is required under EU AI Act Art. 72 (post-market monitoring).</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q13','Yes — continuous bias monitoring with automated alerts',false,3)"><div class="q-radio"></div>Yes — continuous bias monitoring with automated alerts</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q13','Periodic — scheduled reviews but not continuous monitoring',false,2)"><div class="q-radio"></div>Periodic — scheduled reviews but not continuous monitoring</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q13','No — bias testing conducted at deployment only',true,0)"><div class="q-radio"></div>No — bias testing conducted at deployment only</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-14">
+        <div class="q-header">
+          <span class="q-num">Q14</span>
+          <span class="q-text">If bias or discriminatory outcomes are discovered post-deployment, what is the vendor's documented remediation process and timeline?</span>
+          <span class="q-risk-flag flag-critical">CRITICAL</span>
+        </div>
+        <div class="q-guidance">Vendors must have a clear, contractually enforceable process for addressing discovered bias. Vague assurances are insufficient — you need specific remediation timelines, escalation paths, and compensation clauses in the contract.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q14','Formal remediation process with defined SLAs and contractual obligations',false,3)"><div class="q-radio"></div>Formal remediation process with defined SLAs and contractual obligations</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q14','General process described but no contractual SLAs',false,2)"><div class="q-radio"></div>General process described but no contractual SLAs</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q14','No documented bias remediation process exists',true,0)"><div class="q-radio"></div>No documented bias remediation process exists</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-15">
+        <div class="q-header">
+          <span class="q-num">Q15</span>
+          <span class="q-text">Can customers configure the AI system's fairness constraints or thresholds to align with their specific regulatory context and risk tolerance?</span>
+          <span class="q-risk-flag flag-medium">MEDIUM</span>
+        </div>
+        <div class="q-guidance">Different jurisdictions and industries have different fairness requirements. Healthcare AI fairness obligations differ from HR AI. Customer-configurable fairness thresholds demonstrate mature AI governance architecture.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q15','Yes — fully configurable fairness parameters per customer',false,3)"><div class="q-radio"></div>Yes — fully configurable fairness parameters per customer</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q15','Limited — some parameters configurable within fixed bounds',false,2)"><div class="q-radio"></div>Limited — some parameters configurable within fixed bounds</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q15','No — fixed fairness thresholds applied uniformly to all customers',false,1)"><div class="q-radio"></div>No — fixed fairness thresholds applied uniformly to all customers</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-16">
+        <div class="q-header">
+          <span class="q-num">Q16</span>
+          <span class="q-text">Has the vendor engaged a third-party auditor to independently validate their bias testing results and fairness claims?</span>
+          <span class="q-risk-flag flag-high">HIGH</span>
+        </div>
+        <div class="q-guidance">Self-reported bias testing results have inherent conflicts of interest. Independent third-party audits of AI fairness claims are considered best practice and may be required under EU AI Act conformity assessment for High-Risk systems.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q16','Yes — third-party audit completed with report available',false,3)"><div class="q-radio"></div>Yes — third-party audit completed with report available</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q16','In progress — third-party audit planned or underway',false,2)"><div class="q-radio"></div>In progress — third-party audit planned or underway</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q16','No — self-assessed only, no independent validation',true,0)"><div class="q-radio"></div>No — self-assessed only, no independent validation</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn nav-btn-prev" onclick="goToSection(1)">← Previous</button>
+        <button class="nav-btn nav-btn-next" onclick="goToSection(3)">Next: Data Handling →</button>
+        <span class="nav-section-name">Next: Section 04 of 05</span>
+      </div>
+    </div>
+
+    <!-- SECTION 3: DATA HANDLING -->
+    <div class="section-block" id="section-3">
+      <div class="section-header">
+        <span class="section-big-icon">🔒</span>
+        <div>
+          <div class="section-num">Section 04 of 05</div>
+          <div class="section-name" style="color:var(--orange);">Data Handling & Privacy</div>
+          <div class="section-desc">Evaluates how the vendor collects, stores, processes, and protects data — including whether customer data is used to train AI models and how data residency requirements are met.</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-17">
+        <div class="q-header">
+          <span class="q-num">Q17</span>
+          <span class="q-text">Does the vendor use customer data (inputs, outputs, interactions) to train, fine-tune, or improve their AI models?</span>
+          <span class="q-risk-flag flag-critical">CRITICAL</span>
+        </div>
+        <div class="q-guidance">Using customer data to train models without explicit consent violates GDPR and can create confidentiality risks — your proprietary data or customer PII may inadvertently appear in model outputs for other customers (data leakage). Must be addressed in DPA.</div>
+        <div class="q-options">
+          <div class="q-option opt-no" onclick="selectOption(this,'q17','No — customer data is never used for model training',false,3)"><div class="q-radio"></div>No — customer data is never used for model training</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q17','Only with explicit opt-in consent and anonymization',false,2)"><div class="q-radio"></div>Only with explicit opt-in consent and anonymization</div>
+          <div class="q-option opt-yes" onclick="selectOption(this,'q17','Yes — customer data used for training (opt-out available)',true,1)"><div class="q-radio"></div>Yes — customer data used for training (opt-out available)</div>
+          <div class="q-option opt-yes" onclick="selectOption(this,'q17','Yes — customer data used for training (no opt-out)',true,0)"><div class="q-radio"></div>Yes — customer data used for training (no opt-out)</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-18">
+        <div class="q-header">
+          <span class="q-num">Q18</span>
+          <span class="q-text">Where is customer data processed and stored? Does the vendor support data residency requirements (e.g. data must remain within the EU or US)?</span>
+          <span class="q-risk-flag flag-high">HIGH</span>
+        </div>
+        <div class="q-guidance">GDPR Chapter V restricts transfers of EU personal data to non-adequate third countries. US customers in regulated industries (healthcare, finance, government) may have contractual or statutory data residency obligations.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q18','Customer-configurable data residency with regional processing options',false,3)"><div class="q-radio"></div>Customer-configurable data residency with regional processing options</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q18','Fixed regions available (EU, US) but not fully flexible',false,2)"><div class="q-radio"></div>Fixed regions available (EU, US) but not fully flexible</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q18','Data processed in single global region — no residency controls',true,0)"><div class="q-radio"></div>Data processed in single global region — no residency controls</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-19">
+        <div class="q-header">
+          <span class="q-num">Q19</span>
+          <span class="q-text">Does the vendor execute a Data Processing Agreement (DPA) / Data Processing Addendum that covers AI-specific processing activities?</span>
+          <span class="q-risk-flag flag-critical">CRITICAL</span>
+        </div>
+        <div class="q-guidance">GDPR Art. 28 mandates a DPA for all processors handling personal data. The DPA must explicitly cover AI-specific activities including model training data use, automated decision-making, and sub-processor chains used by the AI platform.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q19','Yes — comprehensive DPA covering all AI processing activities',false,3)"><div class="q-radio"></div>Yes — comprehensive DPA covering all AI processing activities</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q19','Standard DPA available but does not specifically address AI activities',false,2)"><div class="q-radio"></div>Standard DPA available but does not specifically address AI activities</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q19','No DPA offered or available',true,0)"><div class="q-radio"></div>No DPA offered or available</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-20">
+        <div class="q-header">
+          <span class="q-num">Q20</span>
+          <span class="q-text">What is the vendor's data retention policy for AI inputs, outputs, and logs? Can customers request deletion of their data (right to erasure)?</span>
+          <span class="q-risk-flag flag-high">HIGH</span>
+        </div>
+        <div class="q-guidance">GDPR Art. 17 grants individuals the right to erasure. Vendors must be able to delete customer data from AI systems, including from training datasets where applicable. Indefinite retention of AI interaction logs without justification is non-compliant.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q20','Defined retention limits with self-service customer deletion capability',false,3)"><div class="q-radio"></div>Defined retention limits with self-service customer deletion capability</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q20','Deletion possible on request but no self-service — takes >30 days',false,2)"><div class="q-radio"></div>Deletion possible on request but no self-service — takes >30 days</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q20','Indefinite retention — no deletion capability offered',true,0)"><div class="q-radio"></div>Indefinite retention — no deletion capability offered</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-21">
+        <div class="q-header">
+          <span class="q-num">Q21</span>
+          <span class="q-text">Has the vendor documented all sub-processors (third parties) that have access to customer data as part of the AI system's operation?</span>
+          <span class="q-risk-flag flag-high">HIGH</span>
+        </div>
+        <div class="q-guidance">AI platforms often rely on cloud infrastructure, third-party model APIs (e.g. OpenAI, AWS Bedrock), and annotation services. GDPR requires disclosure of all sub-processors and customer notification of material changes to the sub-processor list.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q21','Full sub-processor list publicly available with change notification',false,3)"><div class="q-radio"></div>Full sub-processor list publicly available with change notification</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q21','List available on request but not public — changes not proactively notified',false,2)"><div class="q-radio"></div>List available on request but not public — changes not proactively notified</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q21','Sub-processors not disclosed',true,0)"><div class="q-radio"></div>Sub-processors not disclosed</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-22">
+        <div class="q-header">
+          <span class="q-num">Q22</span>
+          <span class="q-text">In the event of a data breach involving the AI system, what is the vendor's notification SLA and what evidence of breach investigation will be provided?</span>
+          <span class="q-risk-flag flag-critical">CRITICAL</span>
+        </div>
+        <div class="q-guidance">GDPR Art. 33 requires breach notification within 72 hours. Vendors must contractually commit to notifying customers within a timeframe that allows the customer to meet their own regulatory notification obligations.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q22','Contractual notification within 24–48 hours with forensic evidence provided',false,3)"><div class="q-radio"></div>Contractual notification within 24–48 hours with forensic evidence provided</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q22','Notification within 72 hours — aligns with GDPR minimum requirement',false,2)"><div class="q-radio"></div>Notification within 72 hours — aligns with GDPR minimum requirement</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q22','No contractual breach notification SLA defined',true,0)"><div class="q-radio"></div>No contractual breach notification SLA defined</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn nav-btn-prev" onclick="goToSection(2)">← Previous</button>
+        <button class="nav-btn nav-btn-next" onclick="goToSection(4)">Next: Compliance Certifications →</button>
+        <span class="nav-section-name">Next: Section 05 of 05</span>
+      </div>
+    </div>
+
+    <!-- SECTION 4: COMPLIANCE CERTIFICATIONS -->
+    <div class="section-block" id="section-4">
+      <div class="section-header">
+        <span class="section-big-icon">📋</span>
+        <div>
+          <div class="section-num">Section 05 of 05</div>
+          <div class="section-name" style="color:var(--green);">Compliance Certifications</div>
+          <div class="section-desc">Verifies the vendor holds appropriate third-party certifications, regulatory compliance evidence, and contractual commitments that demonstrate AI governance maturity.</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-23">
+        <div class="q-header">
+          <span class="q-num">Q23</span>
+          <span class="q-text">Does the vendor hold an ISO/IEC 42001 (AI Management System) certification or is certification currently in progress?</span>
+          <span class="q-risk-flag flag-high">HIGH</span>
+        </div>
+        <div class="q-guidance">ISO 42001 is the international standard for AI management systems — the AI equivalent of ISO 27001 for information security. Certified vendors have undergone independent audit of their AI governance practices. Absence is not disqualifying but should prompt further scrutiny.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q23','Certified — ISO 42001 certificate available for review',false,3)"><div class="q-radio"></div>Certified — ISO 42001 certificate available for review</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q23','In progress — certification audit planned or underway',false,2)"><div class="q-radio"></div>In progress — certification audit planned or underway</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q23','No — not pursuing ISO 42001 certification',false,1)"><div class="q-radio"></div>No — not pursuing ISO 42001 certification</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-24">
+        <div class="q-header">
+          <span class="q-num">Q24</span>
+          <span class="q-text">Does the vendor hold a current SOC 2 Type II report? Does the report scope include AI-specific systems and controls?</span>
+          <span class="q-risk-flag flag-high">HIGH</span>
+        </div>
+        <div class="q-guidance">SOC 2 Type II provides independent assurance over security, availability, and confidentiality controls. Critically, older SOC 2 reports may pre-date the vendor's AI products — verify the scope explicitly includes the AI system being assessed.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q24','Current SOC 2 Type II — scope explicitly includes AI systems',false,3)"><div class="q-radio"></div>Current SOC 2 Type II — scope explicitly includes AI systems</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q24','SOC 2 Type II exists but AI systems may be out of scope',false,2)"><div class="q-radio"></div>SOC 2 Type II exists but AI systems may be out of scope</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q24','No SOC 2 Type II — SOC 2 Type I only or no report available',true,0)"><div class="q-radio"></div>No SOC 2 Type II — SOC 2 Type I only or no report available</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-25">
+        <div class="q-header">
+          <span class="q-num">Q25</span>
+          <span class="q-text">For EU AI Act High-Risk systems — has the vendor completed a conformity assessment and registered the system in the EU AI Act database?</span>
+          <span class="q-risk-flag flag-critical">CRITICAL</span>
+        </div>
+        <div class="q-guidance">EU AI Act Art. 43 requires conformity assessment for High-Risk AI systems before they can be placed on the EU market. EU AI Act Art. 71 requires registration in the EU database. If applicable, failure to comply exposes both vendor and deployer to significant penalties.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q25','Yes — conformity assessment complete and registered in EU AI database',false,3)"><div class="q-radio"></div>Yes — conformity assessment complete and registered in EU AI database</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q25','Assessment in progress — expected completion date provided',false,2)"><div class="q-radio"></div>Assessment in progress — expected completion date provided</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q25','No — conformity assessment not yet initiated',true,0)"><div class="q-radio"></div>No — conformity assessment not yet initiated</div>
+          <div class="q-option opt-na" onclick="selectOption(this,'q25','N/A — system is not EU AI Act High-Risk',false,3)"><div class="q-radio"></div>N/A — system is not EU AI Act High-Risk</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-26">
+        <div class="q-header">
+          <span class="q-num">Q26</span>
+          <span class="q-text">Does the vendor have a published Responsible AI Policy or AI Ethics Framework that has been endorsed by executive leadership?</span>
+          <span class="q-risk-flag flag-medium">MEDIUM</span>
+        </div>
+        <div class="q-guidance">Executive-endorsed Responsible AI policies signal organizational commitment to AI governance beyond regulatory compliance. Vendors without any ethical AI framework may not have governance infrastructure to handle emerging issues proactively.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q26','Comprehensive Responsible AI policy — executive signed, publicly available',false,3)"><div class="q-radio"></div>Comprehensive Responsible AI policy — executive signed, publicly available</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q26','General ethics principles stated but no formal policy document',false,2)"><div class="q-radio"></div>General ethics principles stated but no formal policy document</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q26','No Responsible AI policy exists',false,1)"><div class="q-radio"></div>No Responsible AI policy exists</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-27">
+        <div class="q-header">
+          <span class="q-num">Q27</span>
+          <span class="q-text">Does the vendor contractually commit to notifying customers if their AI system's regulatory compliance status changes materially (e.g. non-compliance finding, regulatory investigation)?</span>
+          <span class="q-risk-flag flag-high">HIGH</span>
+        </div>
+        <div class="q-guidance">Deployers of third-party AI share regulatory exposure under EU AI Act Art. 28. If a vendor's system is found non-compliant after you've deployed it, you need contractual protection including notification, remediation timelines, and indemnification rights.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q27','Yes — contractual obligation to notify + indemnification clause included',false,3)"><div class="q-radio"></div>Yes — contractual obligation to notify + indemnification clause included</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q27','Notification obligation only — no indemnification',false,2)"><div class="q-radio"></div>Notification obligation only — no indemnification</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q27','No contractual compliance notification obligations',true,0)"><div class="q-radio"></div>No contractual compliance notification obligations</div>
+        </div>
+      </div>
+
+      <div class="question-card" id="qcard-28">
+        <div class="q-header">
+          <span class="q-num">Q28</span>
+          <span class="q-text">Does the vendor provide customers with a documented human oversight mechanism — specifically, can decisions made by the AI system be challenged, reviewed, and overridden by a human?</span>
+          <span class="q-risk-flag flag-critical">CRITICAL</span>
+        </div>
+        <div class="q-guidance">Human oversight is a foundational requirement under EU AI Act Art. 14 for High-Risk systems and GDPR Art. 22. The mechanism must be technically implemented — not just a contractual commitment. Verify it works in practice, not just on paper.</div>
+        <div class="q-options">
+          <div class="q-option opt-yes" onclick="selectOption(this,'q28','Yes — full override capability with documented override process',false,3)"><div class="q-radio"></div>Yes — full override capability with documented override process</div>
+          <div class="q-option opt-partial" onclick="selectOption(this,'q28','Partial — override possible but requires vendor assistance to implement',false,2)"><div class="q-radio"></div>Partial — override possible but requires vendor assistance to implement</div>
+          <div class="q-option opt-no" onclick="selectOption(this,'q28','No — AI decisions cannot be overridden within the platform',true,0)"><div class="q-radio"></div>No — AI decisions cannot be overridden within the platform</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn nav-btn-prev" onclick="goToSection(3)">← Previous</button>
+        <button class="nav-btn nav-btn-submit" onclick="submitAssessment()">🎯 Generate Risk Report</button>
+      </div>
+    </div>
+
+  </div><!-- end content -->
+</div><!-- end main -->
+
+<!-- RESULTS PANEL -->
+<div class="results-panel" id="resultsPanel">
+  <div style="max-width:900px; margin:0 auto; padding:28px 36px;">
+    <div id="resultsContent"></div>
+    <div class="results-actions" style="margin-top:20px;">
+      <button class="ra-btn ra-print" onclick="window.print()">🖨️ Print / Save as PDF</button>
+      <button class="ra-btn ra-reset" onclick="resetAssessment()">↺ Start New Assessment</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let answers = {};
+let flags = {};
+
+function selectOption(el, qId, value, isRisk=false, score=null) {
+  const card = el.closest('.question-card');
+  card.querySelectorAll('.q-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[qId] = { value, isRisk, score: score !== null ? score : (isRisk ? 0 : 3) };
+  if (isRisk) {
+    flags[qId] = value;
+    card.classList.add('flagged');
+    card.classList.remove('answered');
+  } else {
+    delete flags[qId];
+    card.classList.add('answered');
+    card.classList.remove('flagged');
+  }
+  updateProgress();
+  updateScore();
+}
+
+function updateProgress() {
+  let count = Object.keys(answers).length;
+  // Count filled textareas
+  document.querySelectorAll('.q-text-input').forEach(t => {
+    const id = t.id.replace('-text','');
+    if (t.value.trim() && !answers[id]) {
+      answers[id] = { value: t.value, isRisk: false, score: 2 };
+    }
+  });
+  count = Object.keys(answers).length;
+  const pct = Math.round((count / 28) * 100);
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = count + ' of 28 answered';
+}
+
+function updateScore() {
+  const scored = Object.values(answers).filter(a => a.score !== undefined);
+  const total = scored.reduce((sum, a) => sum + (a.score || 0), 0);
+  const maxPossible = scored.length * 3;
+  const pct = maxPossible > 0 ? Math.round((total / maxPossible) * 100) : 0;
+  document.getElementById('sidebarScore').textContent = pct;
+  const riskEl = document.getElementById('sidebarRisk');
+  if (pct >= 80) { riskEl.textContent = '✅ Low Risk'; riskEl.style.color = 'var(--green)'; }
+  else if (pct >= 60) { riskEl.textContent = '⚠️ Medium Risk'; riskEl.style.color = 'var(--yellow)'; }
+  else if (pct >= 40) { riskEl.textContent = '🔶 High Risk'; riskEl.style.color = 'var(--orange)'; }
+  else { riskEl.textContent = '🚫 Critical Risk'; riskEl.style.color = 'var(--red)'; }
+}
+
+function goToSection(idx) {
+  document.querySelectorAll('.section-block').forEach(s => s.classList.remove('active'));
+  document.getElementById('section-' + idx).classList.add('active');
+  document.querySelectorAll('.section-nav-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.section-nav-btn')[idx].classList.add('active');
+  document.getElementById('contentArea').scrollTop = 0;
+  window.scrollTo(0,0);
+}
+
+function submitAssessment() {
+  const scored = Object.values(answers).filter(a => a.score !== undefined);
+  const total = scored.reduce((sum, a) => sum + (a.score || 0), 0);
+  const maxPossible = scored.length * 3;
+  const pct = maxPossible > 0 ? Math.round((total / maxPossible) * 100) : 0;
+  const flagCount = Object.keys(flags).length;
+  const answeredCount = Object.keys(answers).length;
+
+  let riskLevel, riskColor, recommendation;
+  if (pct >= 80 && flagCount === 0) {
+    riskLevel = '✅ LOW RISK — Approved for Procurement';
+    riskColor = 'var(--green)';
+    recommendation = 'This vendor demonstrates strong AI governance practices. Proceed with standard procurement process. Ensure DPA is executed and schedule an annual reassessment.';
+  } else if (pct >= 60 && flagCount <= 2) {
+    riskLevel = '⚠️ MEDIUM RISK — Conditional Approval';
+    riskColor = 'var(--yellow)';
+    recommendation = 'Vendor shows adequate governance with identified gaps. Procurement may proceed with documented risk acceptance, contractual remediation commitments, and enhanced monitoring. Reassess in 6 months.';
+  } else if (pct >= 40) {
+    riskLevel = '🔶 HIGH RISK — Escalate to Legal & GRC';
+    riskColor = 'var(--orange)';
+    recommendation = 'Significant governance gaps identified. Do not proceed without senior GRC, legal review, and contractual remediation commitments addressing all flagged items. Consider alternative vendors.';
+  } else {
+    riskLevel = '🚫 CRITICAL RISK — Do Not Proceed';
+    riskColor = 'var(--red)';
+    recommendation = 'Critical AI governance deficiencies identified. Procurement should not proceed. This vendor does not meet minimum AI risk management standards. Escalate findings to CISO and Legal immediately.';
+  }
+
+  const flagsHtml = Object.entries(flags).length > 0
+    ? Object.entries(flags).map(([q, v]) => `<div class="rf-item"><span class="rf-item-q">${q.toUpperCase()}</span>${v}</div>`).join('')
+    : '<div style="color:var(--green);font-size:12px;">✅ No critical flags raised</div>';
+
+  const today = new Date().toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'});
+
+  document.getElementById('resultsContent').innerHTML = `
+    <div class="results-header">
+      <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--text-muted);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:8px;">AI VENDOR RISK ASSESSMENT — PURSUE SEO MARKETING · ${today}</div>
+      <div class="results-score-big" style="color:${riskColor};">${pct}<span style="font-size:28px;color:var(--text-muted);">%</span></div>
+      <div class="results-score-label">Governance Score (${answeredCount} of 28 questions answered)</div>
+      <div class="results-risk-level" style="color:${riskColor};">${riskLevel}</div>
+      <div class="results-rec">${recommendation}</div>
+    </div>
+
+    <div class="results-breakdown">
+      <div class="rb-card">
+        <div class="rb-icon">📊</div>
+        <div class="rb-label">Score</div>
+        <div class="rb-val" style="color:${riskColor};">${pct}%</div>
+      </div>
+      <div class="rb-card">
+        <div class="rb-icon">🚩</div>
+        <div class="rb-label">Critical Flags</div>
+        <div class="rb-val" style="color:${flagCount>0?'var(--red)':'var(--green)'};">${flagCount}</div>
+      </div>
+      <div class="rb-card">
+        <div class="rb-icon">✅</div>
+        <div class="rb-label">Questions Answered</div>
+        <div class="rb-val" style="color:var(--cyan);">${answeredCount}/28</div>
+      </div>
+      <div class="rb-card">
+        <div class="rb-icon">📋</div>
+        <div class="rb-label">Next Review</div>
+        <div class="rb-val" style="font-size:13px;color:var(--yellow);">${pct>=80?'12 months':'6 months'}</div>
+      </div>
+    </div>
+
+    <div class="results-flags">
+      <div class="rf-title">🚩 Critical Risk Flags Identified</div>
+      ${flagsHtml}
+    </div>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;">
+      <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--cyan);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px;">Required Next Steps</div>
+      ${pct>=80?`
+        <div style="display:flex;gap:8px;font-size:12px;color:var(--text-muted);margin-bottom:8px;align-items:flex-start;"><span style="color:var(--green);">✓</span>Execute Data Processing Agreement (DPA) before go-live</div>
+        <div style="display:flex;gap:8px;font-size:12px;color:var(--text-muted);margin-bottom:8px;align-items:flex-start;"><span style="color:var(--green);">✓</span>Document AI system in organizational AI inventory</div>
+        <div style="display:flex;gap:8px;font-size:12px;color:var(--text-muted);margin-bottom:8px;align-items:flex-start;"><span style="color:var(--green);">✓</span>Implement human oversight procedure per EU AI Act requirements</div>
+        <div style="display:flex;gap:8px;font-size:12px;color:var(--text-muted);margin-bottom:8px;align-items:flex-start;"><span style="color:var(--green);">✓</span>Schedule annual vendor reassessment — set calendar reminder</div>
+      `:`
+        <div style="display:flex;gap:8px;font-size:12px;color:var(--text-muted);margin-bottom:8px;align-items:flex-start;"><span style="color:var(--red);">→</span>Do not sign contract until all Critical flags are resolved</div>
+        <div style="display:flex;gap:8px;font-size:12px;color:var(--text-muted);margin-bottom:8px;align-items:flex-start;"><span style="color:var(--red);">→</span>Escalate findings to CISO, GRC Lead, and Legal Counsel</div>
+        <div style="display:flex;gap:8px;font-size:12px;color:var(--text-muted);margin-bottom:8px;align-items:flex-start;"><span style="color:var(--red);">→</span>Request vendor remediation plan with committed timelines</div>
+        <div style="display:flex;gap:8px;font-size:12px;color:var(--text-muted);margin-bottom:8px;align-items:flex-start;"><span style="color:var(--red);">→</span>Evaluate alternative vendors if remediation timeline exceeds 90 days</div>
+        <div style="display:flex;gap:8px;font-size:12px;color:var(--text-muted);margin-bottom:8px;align-items:flex-start;"><span style="color:var(--red);">→</span>Document risk acceptance decision with senior sign-off if proceeding</div>
+      `}
+    </div>
+  `;
+
+  document.getElementById('mainLayout').style.display = 'none';
+  document.getElementById('resultsPanel').classList.add('visible');
+  window.scrollTo(0,0);
+}
+
+function resetAssessment() {
+  answers = {};
+  flags = {};
+  document.querySelectorAll('.q-option').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('.q-text-input').forEach(t => t.value = '');
+  document.querySelectorAll('.question-card').forEach(c => { c.classList.remove('answered','flagged'); });
+  document.getElementById('progressBar').style.width = '0%';
+  document.getElementById('progressLabel').textContent = '0 of 28 answered';
+  document.getElementById('sidebarScore').textContent = '0';
+  document.getElementById('sidebarRisk').textContent = 'Not started';
+  document.getElementById('sidebarRisk').style.color = 'var(--text-muted)';
+  document.getElementById('resultsPanel').classList.remove('visible');
+  document.getElementById('mainLayout').style.display = 'grid';
+  goToSection(0);
+}
+</script>
+</body>
+</html>
