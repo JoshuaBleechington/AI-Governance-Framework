@@ -164,7 +164,7 @@ The following policy documents were developed as outputs of this program:
 - 28-question assessment covering model transparency, bias testing, data handling, and compliance certifications
 - Required for any vendor providing AI/ML capabilities as part of their product
 - Maps to NIST AI RMF Measure function and EU AI Act conformity assessment requirements
-
+> 📋 **[AI Vendor Risk Questionnaire (Interactive) →](https://joshuableechington.github.io/AI-Governance-Framework/ai-vendor-questionnaire.html)**
 **AI Incident Response Procedure**
 - Defines what constitutes an "AI incident" (harmful output, discriminatory decision, model failure)
 - Escalation path from operational team → GRC → Legal
