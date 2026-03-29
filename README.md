@@ -16,6 +16,9 @@ In this project, I researched, mapped, and applied the leading AI governance fra
 > *Includes EU AI Act Risk Pyramid, NIST AI RMF Core Functions, Interactive Risk Classifier, and Framework Comparison*
 
 > 📋 **[AI Vendor Risk Questionnaire (Interactive) →](https://joshuableechington.github.io/AI-Governance-Framework/ai-vendor-questionnaire.html)**
+
+> 📄 **[AI Vendor Risk Questionnaire (PDF — Printable)](./docs/ai-vendor-questionnaire.pdf)**
+> *Printable version for emailing directly to AI vendors*
 ---
 
 ## Why AI Governance Matters Now
